@@ -8,7 +8,7 @@
     </parent>
     <groupId>com.huaban</groupId>
     <artifactId>jieba-analysis</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>结巴分词工具(jieba for java)</name>
@@ -70,23 +70,23 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.4</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <keyname>Libin &lt;bin.li@upai.com&gt;</keyname>
-                </configuration>
-            </plugin>
+            <!-- <plugin> -->
+            <!--     <groupId>org.apache.maven.plugins</groupId> -->
+            <!--     <artifactId>maven-gpg-plugin</artifactId> -->
+            <!--     <version>1.4</version> -->
+            <!--     <executions> -->
+            <!--         <execution> -->
+            <!--             <id>sign-artifacts</id> -->
+            <!--             <phase>verify</phase> -->
+            <!--             <goals> -->
+            <!--                 <goal>sign</goal> -->
+            <!--             </goals> -->
+            <!--         </execution> -->
+            <!--     </executions> -->
+            <!--     <configuration> -->
+            <!--         <keyname>Libin &lt;bin.li@upai.com&gt;</keyname> -->
+            <!--     </configuration> -->
+            <!-- </plugin> -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -166,26 +166,26 @@
                     <value>true</value>
                 </property>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <keyname>Libin &lt;bin.li@upai.com&gt;</keyname>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <!-- <build> -->
+            <!--     <plugins> -->
+            <!--         <plugin> -->
+            <!--             <groupId>org.apache.maven.plugins</groupId> -->
+            <!--             <artifactId>maven-gpg-plugin</artifactId> -->
+            <!--             <executions> -->
+            <!--                 <execution> -->
+            <!--                     <id>sign-artifacts</id> -->
+            <!--                     <phase>verify</phase> -->
+            <!--                     <goals> -->
+            <!--                         <goal>sign</goal> -->
+            <!--                     </goals> -->
+            <!--                 </execution> -->
+            <!--             </executions> -->
+            <!--             <configuration> -->
+            <!--                 <keyname>Libin &lt;bin.li@upai.com&gt;</keyname> -->
+            <!--             </configuration> -->
+            <!--         </plugin> -->
+            <!--     </plugins> -->
+            <!-- </build> -->
         </profile>
     </profiles>
 
