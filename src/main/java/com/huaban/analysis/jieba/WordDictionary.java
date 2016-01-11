@@ -49,7 +49,7 @@ public class WordDictionary {
 
     /**
      * for ES to initialize the user dictionary.
-     * 
+     *
      * @param configFile
      */
     public void init(Path configFile) {
@@ -58,7 +58,7 @@ public class WordDictionary {
         synchronized (WordDictionary.class) {
             if (loadedPath.contains(abspath))
                 return;
-            
+
             DirectoryStream<Path> stream;
             try {
                 stream = Files.newDirectoryStream(configFile, String.format(Locale.getDefault(), "*%s", USER_DICT_SUFFIX));
@@ -128,7 +128,7 @@ public class WordDictionary {
     }
 
 
-    private String addWord(String word) {
+    public String addWord(String word) {
         if (null != word && !"".equals(word.trim())) {
             String key = word.trim().toLowerCase(Locale.getDefault());
             _dict.fillSegment(key.toCharArray());
@@ -144,7 +144,7 @@ public class WordDictionary {
     }
 
 
-    public void loadUserDict(Path userDict, Charset charset) {                
+    public void loadUserDict(Path userDict, Charset charset) {
         try {
             BufferedReader br = Files.newBufferedReader(userDict, charset);
             long s = System.currentTimeMillis();
@@ -191,5 +191,9 @@ public class WordDictionary {
             return freqs.get(key);
         else
             return minFreq;
+    }
+
+    public Double getTotal() {
+        return total;
     }
 }

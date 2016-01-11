@@ -163,7 +163,7 @@ public class JiebaSegmenter {
 
 
     /*
-     * 
+     *
      */
     public List<String> sentenceProcess(String sentence) {
         List<String> tokens = new ArrayList<String>();
@@ -217,4 +217,32 @@ public class JiebaSegmenter {
         }
         return tokens;
     }
+
+    public void addCustomWord(String word, Double frequency) {
+        wordDict.addWord(word);
+        wordDict.freqs.put(word, frequency);
+    }
+
+    private Double suggestFrequency(String word) {
+        Double suggestedFrequency = 1.0;
+        for (String wordSeg: sentenceProcess(word)) {
+            Double wordFreq = wordDict.freqs.get(wordSeg);
+            if (wordFreq != null) {
+                suggestedFrequency *= wordFreq / wordDict.getTotal();
+            }
+        }
+
+        Double actualWordFrequency = wordDict.freqs.get(word);
+
+        if (actualWordFrequency != null && actualWordFrequency < suggestedFrequency) {
+            return actualWordFrequency;
+        } else {
+            return suggestedFrequency;
+        }
+    }
+
+    public void addCustomWord(String word) {
+        addCustomWord(word, suggestFrequency(word));
+    }
+
 }

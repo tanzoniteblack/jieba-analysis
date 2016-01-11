@@ -12,6 +12,8 @@ import java.util.Locale;
 import junit.framework.TestCase;
 
 import org.junit.Test;
+import org.junit.Assert;
+
 
 import com.huaban.analysis.jieba.JiebaSegmenter.SegMode;
 
@@ -195,5 +197,14 @@ public class JiebaSegmenterTest extends TestCase {
         long elapsed = (System.currentTimeMillis() - start);
         System.out.println(String.format(Locale.getDefault(), "time elapsed:%d, rate:%fkb/s, sentences:%.2f/s", elapsed,
             (length * 1.0) / 1024.0f / (elapsed * 1.0 / 1000.0f), wordCount * 1000.0f / (elapsed * 1.0)));
+    }
+    
+    @Test
+    public void testAddCustomWord() {
+    	String testString = "邓布利多";
+    	assertEquals(3,	segmenter.process(testString, SegMode.SEARCH).size());
+    	
+    	segmenter.addCustomWord(testString);
+    	assertEquals(1, segmenter.process(testString, SegMode.SEARCH).size());
     }
 }
